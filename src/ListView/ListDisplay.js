@@ -5,6 +5,7 @@ const List=(props)=>{
     return(
         <div>
             <table className="table table-striped">
+            <tbody>
             <tr>
             <td>Name</td>
             <td>{props.person.name}</td>
@@ -21,6 +22,7 @@ const List=(props)=>{
             <td>TimeSpent</td>
             <td>{props.person.timespent}</td>
             </tr>
+            </tbody>
             </table>
         </div>
     )
