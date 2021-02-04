@@ -1,25 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import React,{Component} from 'react';
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
+import Login from './Login/Login';
+import Navigation from './Navigation/Navigation'
+import DashBoard from './DashBoard/DashBoard'
+import ListView from './ListView/ListView'
+import User from './AddUser/User';
+import Logout from './Login/Logout';
 
-function App() {
+class App extends Component {
+  state={
+    login:true
+  }
+  
+setLogin=()=>{
+  this.setState({login:false})
+}
+setLogout=()=>{
+  this.setState({login:true})
+}
+  render(){
+    let nav=null;
+    if(!this.state.login){
+      nav=(<Navigation />)
+    }
+  
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+   
+    <div>
+      
+       <Router>
+       {nav}
+    <Switch>
+    <Route path='/' exact render={()=>this.state.login?<Login login={this.setLogin} />:<DashBoard/>} />
+    <Route path='/dashboard' component={DashBoard}/>
+    <Route path='/adduser' component={User}/>
+    <Route path='/logout' render={()=>this.state.login?<Login login={this.setLogin} />:<Logout logout={this.setLogout}/>}/>
+    <Route path='/view' component={ListView}/>
+    </Switch>
+    </Router>
+ 
     </div>
+    
+    
+  
+  
   );
+  }
 }
 
 export default App;
