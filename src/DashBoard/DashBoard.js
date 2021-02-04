@@ -21,8 +21,9 @@ class DashBoard extends Component{
     }
     render(){
         return(
-            
+               <div className="container">
                 <Card person={this.state.person}/>
+                </div>
         
                   
         )

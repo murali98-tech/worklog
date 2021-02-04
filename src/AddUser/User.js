@@ -19,7 +19,8 @@ class User extends Component{
       setTime=(event)=>{
         this.setState({timespent:event.target.value})
       }
-      printState=()=>{
+      printState=(event)=>{
+        event.preventDefault();
           console.log(this.state);
       }
       
@@ -27,7 +28,7 @@ class User extends Component{
     render(){
         return(
             <AddUser name={(e)=>this.setname(e)} project={(e)=>this.setProject(e)} description={(e)=>this.setDescription(e)}
-            timespent={(e)=>this.setTime(e)} change={this.printState()}
+            timespent={(e)=>this.setTime(e)} change={(e)=>this.printState(e)}
             />
 
         )

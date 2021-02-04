@@ -3,9 +3,14 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 export default class Footer extends Component {
   render() {
     return (
-      <div className="footer bg-dark">
-        <p>Copyrights reserved@2020</p>
+      <footer className="bg-light text-center text-lg-start">
+      
+      <div className="text-center p-3" style={{backgroundColor:'rgba(0, 0, 0, 0.2)'}}>
+        © 2020 Copyright:
+        <a className="text-dark" href="https://www.be.cognozant.com">Cognizant.com</a>
       </div>
+      
+    </footer>
     );
   }
 }

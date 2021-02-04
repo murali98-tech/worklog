@@ -7,6 +7,7 @@ import DashBoard from './DashBoard/DashBoard'
 import ListView from './ListView/ListView'
 import User from './AddUser/User';
 import Logout from './Login/Logout';
+import Footer from './Footer/Footer';
 
 class App extends Component {
   state={
@@ -21,8 +22,10 @@ setLogout=()=>{
 }
   render(){
     let nav=null;
+    let footer=null;
     if(!this.state.login){
       nav=(<Navigation />)
+      footer=(<Footer/>)
     }
   
     
@@ -40,8 +43,9 @@ setLogout=()=>{
     <Route path='/logout' render={()=>this.state.login?<Login login={this.setLogin} />:<Logout logout={this.setLogout}/>}/>
     <Route path='/view' component={ListView}/>
     </Switch>
+    
     </Router>
- 
+    {footer}
     </div>
     
     
