@@ -46,6 +46,12 @@ class EmployeeLogController {
 		 
 	   }
 	  
-	
+	   @ResponseBody
+	   @GetMapping("/getDetails")
+	   def getEmployeeDetails() {
+		   service.getAllLog();
+		   
+	   }
+	   
 	
 }
