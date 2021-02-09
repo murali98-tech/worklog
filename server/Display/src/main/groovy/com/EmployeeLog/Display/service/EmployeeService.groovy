@@ -1,7 +1,10 @@
 package com.EmployeeLog.Display.service
 
-import java.security.PrivateKey
 
+
+
+
+import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -15,8 +18,11 @@ class EmployeeService {
 	@Autowired
 	private EmployeeRepository repository;
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	 def getAllLog() {
+		 logger.info('in EmployeeService')
+		 logger.debug('in getAllLog')
 		 repository.findAll();
 	 }
  }

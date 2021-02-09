@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import com.EmployeeLog.Display.service.EmployeeService
 
@@ -15,6 +17,8 @@ import com.EmployeeLog.Display.service.EmployeeService
 class DisplayController {
 	@Autowired
 	private EmployeeService service;
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@ResponseBody
 	@GetMapping("/")
 	def getg() {
@@ -24,7 +28,10 @@ class DisplayController {
 	@ResponseBody
 	@GetMapping("/getDetails")
 	def getEmployeeDetails() {
+		logger.info("in displayController")
+		logger.debug('in getEmployeeDetails')
 		service.getAllLog();
+		
 		
 	}
 	

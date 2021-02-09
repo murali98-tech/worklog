@@ -2,6 +2,7 @@ package com.worklog.EmployeeLog.controller
 
 
 
+import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Controller
@@ -21,13 +22,16 @@ import com.worklog.EmployeeLog.service.EmployeeService
 class EmployeeLogController {
 	@Autowired
 	private EmployeeService service;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	   @ResponseBody
 	   @PostMapping("/RegisterLog")
 	   def setEmployeeDetails(@RequestBody EmployeeDetails employeedetails) {
+		   logger.info('in EmployeeController')
+		   logger.info('in setEmployeeDetails')
 		   WorkLog work=new WorkLog(employeedetails.getTimeSpent(),employeedetails.getDescription())
 		   ArrayList <WorkLog> list=new ArrayList() ;
 		   list.add(work)
-		   println(list.get(0).getDescription())
+		
 		   EmployeeWorkLog employeeWorkLog= new EmployeeWorkLog();
 		   employeeWorkLog.setName(employeedetails.getName());
 		   employeeWorkLog.setProject(employeedetails.getProject());
@@ -36,11 +40,13 @@ class EmployeeLogController {
 		  EmployeeWorkLog workLog= service.findEmployee(employeedetails);
 		   
 		   if( workLog) {
+			   logger.info('worklog present')
 			   workLog.getWorkLog().add(work);
 			   service.addLog(workLog);
 			   
 		   }
 		   else {
+			   logger.info('worklog not present')
 			   service.addLog(employeeWorkLog);
 		   }
 		 
