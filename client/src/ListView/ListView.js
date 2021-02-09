@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 import List from './ListDisplay';
 import './List.css'
-import axios from'axios'
+
 class ListView extends Component{
    
    
