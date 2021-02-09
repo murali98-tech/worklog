@@ -9,7 +9,7 @@ class DashBoard extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8101/display-ws/getDetails`)
+        axios.get(`http://localhost:8888/display-ws/getDetails`)
           .then(res => {  
             console.log(res.data);
             const personData = res.data;

@@ -23,7 +23,7 @@ class User extends Component{
       printState=(event)=>{
         event.preventDefault();
           console.log(this.state);
-          axios.post(`http://localhost:8101/logs/RegisterLog`,  this.state )
+          axios.post(`http://localhost:8888/logs/RegisterLog`,  this.state )
           .then(res => {
             console.log(res.data);
             alert('sucessfully registered')

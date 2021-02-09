@@ -1,6 +1,7 @@
 package com.EmployeeLog.Display.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,6 +11,7 @@ import com.EmployeeLog.Display.service.EmployeeService
 
 @Controller
 @CrossOrigin(origins = "*")
+@RefreshScope
 class DisplayController {
 	@Autowired
 	private EmployeeService service;
